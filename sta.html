@@ -1,0 +1,460 @@
+<!-----META SECTION----->
+<!DOCTYPE html>
+ <html lang="en">
+  <head>
+   <title>Search Job</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
+   <link rel="stylesheet" href="style.css">
+   <meta name="robots" content="noindex, nofollow">
+  </head>
+  <body>
+    <!------HEADER SECTION HEADER SECTION HEADER SECTION ------>
+<header>
+      <div class="width-100">
+      <div class="container header">
+        <div class="width-25">
+          <img src="d:\let's find\Lets--find-main\Lets--find-main\logo.jpg.jpg">
+        </div>
+        <div class="width-50" >
+          <ul class="header-menu ">
+            <li><a href="index.html" onclick="navigateToSection('homeSection')">Home</a></li>
+            <li><a href="#" onclick="navigateToSection('jobListings')">jobs </a></li>
+            <li><a href="#" onclick="navigateToSection('companiesSection'); populateCompaniesSection();">Companies</a></li>
+            <li><a href="#" onclick="navigateToSection('servicesSection')">Services</a></li>
+            <li><a href="#" onclick="navigateToSection('contactSection')">Contact</a></li>
+          </ul>
+        </div>
+        <div class="width-25">
+          <a href="#" class="button-job-post">
+            <i class="fa fa-shopping-bag" aria-hidden="true"></i><button class="button-job-post" onclick="openJobPopup()"> Submit a Job</button> </a>
+          <a href="#" class="button-resume">
+            <button class="login-btn" onclick="openLoginForm()">Login</button>
+            </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!------SEARCH SECTION SEARCH SECTION SEARCH SECTION ------>
+  <div class="content-section" id="bannerSection">
+<div class= "bannerSection" id="start">
+    <div class="container">
+      <h1 class="banner-heading">Find The Best Job For Your Skills with less Qualification</h1>
+      <p class="banner-para">Get Jobs according to Your Capabilities</p>
+      <div class="search-sect">
+        <input type="text" class="search-textbox" placeholder="Search Company">
+      </div>
+      <div class="search-sect">
+        <input type="text" class="search-textbox" placeholder="Select Location">
+        <i class="fa fa-life-ring icons" aria-hidden="true"></i>
+      </div>
+      <div class="search-sect" >
+        <Select id="categories" name="categories" class="search-textbox" placeholder="All categories">
+          
+          <option value="Technician">Computer Technician</option>
+          <option value="Electrician"> Electrician</option>
+          <option value="Plumber"> Plumber</option>
+          </Select>
+        <i class="fa fa-caret-down icons" aria-hidden="true"></i>
+      </div>
+      <div class="search-sect">
+        <button class="search-button" onclick="performSearch()">
+          <i class="fa fa-search " aria-hidden="true"></i> Search Here </button>
+      </div>
+    </div>
+  </div>
+  <div class="Next">
+    <h2>Availiable jobs</h2> 
+    </div>
+ 
+   <!------CATEGORY SECTION CATEGORY SECTION CATEGORY SECTION ------>
+<div class="width-100 skill-section">
+    <div class="container">
+      <div class="skill-list">
+        <div class="width-33">
+          <img class="skill-img" src="d:\let's find\Lets--find-main\Lets--find-main\cook.jpg.jpg">
+          
+        </div>
+        <div class="width-66">
+          <h4>Cook</h4>
+          <button class="view-button">7 jobs</button>
+        </div>
+      </div>
+      <div class="skill-list">
+        <div class="width-33">
+          <img class="skill-img" src="d:\let's find\Lets--find-main\Lets--find-main\car.jpg.jpg">
+        </div>
+        <div class="width-66">
+          <h4>Carpenter</h4>
+          <button class="view-button">5 jobs</button>
+        </div>
+      </div>
+      <div class="skill-list">
+        <div class="width-33">
+          <img class="skill-img" src="d:\let's find\Lets--find-main\Lets--find-main\elec.jpeg">
+        </div>
+        <div class="width-66">
+          <h4>Electrician</h4>
+          <button class="view-button"> 8 jobs</button>
+        </div>
+      </div>
+      <div class="skill-list">
+        <div class="width-33">
+          <img class="skill-img" src="d:\let's find\Lets--find-main\Lets--find-main\plum.jpeg">
+        </div>
+        <div class="width-66">
+          <h4>Plumber</h4>
+          <button class="view-button">4 jobs</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+   <!-- Login Popup Form -->
+   <div class="login-popup" id="loginPopup">
+    <div class="login-form">
+        <span class="close-btn" onclick="closeLoginForm()">&times;</span>
+        <h2>Login</h2>
+        <form>
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+            
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter your password" required>
+            
+            <button type="submit">Login</button>
+            <button type="button" onclick="createAccount()">Create Account</button>
+        </form>
+        <div class="divider">
+          <span>or sign in with</span>
+      </div>
+      <div class="social-login">
+          <button class="google-signin">
+              <i class="fa fa-google"></i> Sign in with Google
+          </button>
+          <button class="facebook-signin">
+              <i class="fa fa-facebook"></i> Sign in with Facebook
+          </button>
+      </div>
+    </div>
+</div>
+
+<!-- Job Submission Popup Form -->
+<div id="jobPopup" class="login-popup">
+  <div class="login-form">
+      <span class="close-btn" onclick="closeJobPopup()">&times;</span>
+      <h2>Submit a Job</h2>
+      <form id="jobForm">
+          <label for="jobTitle">Job Title</label>
+          <input type="text" id="jobTitle" name="jobTitle" required>
+
+          <label for="companyName">Company Name</label>
+          <input type="text" id="companyName" name="companyName" required>
+
+          <label for="jobDescription">Job Description</label>
+          <textarea id="jobDescription" name="jobDescription" rows="4" required></textarea>
+
+          <label for="resumeUpload">Upload Resume</label>
+          <input type="file" id="resumeUpload" name="resumeUpload">
+
+          <button type="submit">Submit</button>
+      </form>
+  </div>
+</div>
+
+<!-- Full-Page Contact Us Popup Form -->
+<div id="contactSection" class="content-section" style="display: none;">
+  <div class="full-page-form">
+      <span class="close-btn" onclick="closeContactPopup()">&times;</span>
+      <h2>Contact Us</h2>
+      <form id="contactForm">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="contactNo">Contact No</label>
+          <input type="tel" id="contactNo" name="contactNo" required>
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+
+          <button type="submit">Send Message</button>
+      </form>
+  </div>
+</div>
+
+
+<!-- Services Section -->
+<div id="servicesSection" class="content-section" style="display: none;"> 
+  <h1>Our Services</h1>
+  <p>Discover the range of services we offer to help job seekers and employers alike.</p>
+
+  <div class="service-item">
+      <h2>Job Matching</h2>
+      <p>We use advanced algorithms to match you with jobs that align with your skills, experience, and preferences.</p>
+  </div>
+
+  <div class="service-item">
+      <h2>Resume Building</h2>
+      <p>Need help creating a professional resume? Our platform offers tools and templates to help you stand out.</p>
+  </div>
+
+  <div class="service-item">
+      <h2>Career Guidance</h2>
+      <p>Our career experts provide guidance on navigating the job market, career growth, and interview preparation.</p>
+  </div>
+
+  <div class="service-item">
+      <h2>Job Alerts</h2>
+      <p>Sign up for personalized job alerts, and receive notifications about new opportunities that match your profile.</p>
+  </div>
+
+  <div class="service-item">
+      <h2>Employer Services</h2>
+      <p>For employers, we offer candidate matching, recruitment tools, and job posting options to help you find the right talent.</p>
+  </div>
+</div>
+<!---company-->
+<div id="companiesSection" class="content-section" style="display: none;">
+  <h1>Companies Providing Jobs</h1>
+  <p>Explore companies offering opportunities for skilled individuals in your area.</p>
+  <div id="companiesList"></div>
+</div>
+  
+  <!-----RECENT JOB SECTION RECENT JOB SECTION RECENT JOB SECTION ----->
+  <div class="content-section" id="jobListings" style="display: none;">
+<div class="width-100 recent-job">
+    <div class="container">
+      <h2 class="recent-job-heading">RECENT JOB</h2>
+      <p class="recent-job-sub-heading">Get the list of all recent jobs</p>
+      <!-----JOB LIST----->
+      <div class="width-50" id="Jobs">
+        <div class="recent-job-list">
+          <div class="width-100">
+            <h4 class="job-title">House Keeper</h4>
+          </div>
+          <div class="width-33">
+            <i class="fa fa-briefcase" aria-hidden="true"></i> 1 Years
+          </div>
+          <div class="width-33">
+            <i class="fa fa-map-marker" aria-hidden="true"></i> Nepal
+          </div>
+          <div class="width-100">
+            <p class="job-skill">
+              <b>Requirement : </b>Good Understanding and Trustworthy
+            </p>
+          </div>
+          <div class="width-100">
+            <a href="apply.html" class="job-apply-button">Apply Now</a>
+          </div>
+        </div>
+      </div>
+      <!-----JOB LIST------>
+      <div class="width-50">
+        <div class="recent-job-list">
+          <div class="width-100">
+            <h4 class="job-title">Painter</h4>
+          </div>
+          <div class="width-33">
+            <i class="fa fa-briefcase" aria-hidden="true"></i> 1 to 2 Years
+          </div>
+          <div class="width-33">
+            <i class="fa fa-map-marker" aria-hidden="true"></i> Nepal,Kathmandu
+          </div>
+          <div class="width-100">
+            <p class="job-skill">
+              <b>Requirement : </b>Experienced and Skilled in This Field
+            </p>
+          </div>
+          <div class="width-100">
+            <a href="apply.html" class="job-apply-button">Apply Now</a>
+          </div>
+        </div>
+      </div>
+      <!-----JOB LIST----->
+      <div class="width-50">
+        <div class="recent-job-list">
+          <div class="width-100">
+            <h4 class="job-title">Mechanic</h4>
+          </div>
+          <div class="width-33">
+            <i class="fa fa-briefcase" aria-hidden="true"></i> 1 to 4 Years
+          </div>
+          <div class="width-33">
+            <i class="fa fa-map-marker" aria-hidden="true"></i> Biratnagar
+          </div>
+          <div class="width-100">
+            <p class="job-skill">
+              <b>Requirement : </b>Experienced Mechanic
+            </p>
+          </div>
+          <div class="width-100">
+            <a href="apply.html" class="job-apply-button">Apply Now</a>
+          </div>
+        </div>
+      </div>
+      <!-----JOB LIST----->
+      <div class="width-50">
+        <div class="recent-job-list">
+          <div class="width-100">
+            <h4 class="job-title">Electrician</h4>     
+          </div>
+          <div class="width-33">
+            <i class="fa fa-briefcase" aria-hidden="true"></i> 1 to 4 Years
+          </div>
+          <div class="width-33">
+            <i class="fa fa-map-marker" aria-hidden="true"></i> Biratnagar          
+          </div>
+          <div class="width-100">
+            <p class="job-skill">
+              <b>Requirement : Qualification +2 and Experienced
+            </p>
+          </div>
+          <div class="width-100">
+            <a href="apply.html" class="job-apply-button">Apply Now</a>
+          </div>
+        </div>
+      </div>
+      <!-----JOB LIST----->
+      <div class="width-50">
+        <div class="recent-job-list">
+          <div class="width-100">
+            <h4 class="job-title">Trainer</h4>
+            </div>
+          <div class="width-33">
+            <i class="fa fa-briefcase" aria-hidden="true"></i> 1 to 4 Years
+          </div>
+          <div class="width-33">
+            <i class="fa fa-map-marker" aria-hidden="true"></i> Biratnagar
+          </div>
+          <div class="width-100">
+            <p class="job-skill">
+              <b>Skills : </b>Well Experienced, Good Physics and Disciplined
+            </p>
+          </div>
+          <div class="width-100">
+            <a href="apply.html" class="job-apply-button">Apply Now</a>
+          </div>
+        </div>
+      </div>
+      <!-----JOB LIST------>
+      <div class="width-50">
+        <div class="recent-job-list">
+          <div class="width-100">
+            <h4 class="job-title">Carpenter</h4>
+          </div>
+          <div class="width-33">
+            <i class="fa fa-briefcase" aria-hidden="true"></i> 1 to 2 Years
+          </div>
+          <div class="width-33">
+            <i class="fa fa-map-marker" aria-hidden="true"></i> Biratnagar
+          </div>
+          <div class="width-100">
+            <p class="job-skill">
+              <b>Skills : </b>Good with Furniture works
+            </p>
+          </div>
+          <div class="width-100">
+            <a href="apply.html" class="job-apply-button">Apply Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!-------FEATURE SECTION FEATURE SECTION FEATURE SECTION------->
+  <div class="content-section" id="feauture-section">
+<div class="width-100 feature-sect">
+    <div class="container">
+      <div class="width-50">
+        <div class="feature-panel">
+          <img src="d:\let's find\Lets--find-main\Lets--find-main\j.jpg" class="feature-img">
+          <h4 class="feature-title">DO YOU WANT TO FIND A JOB ?</h4>
+          <p class="feature-desc">If You want to earn some good with less skill You have Please Visit Here</p>
+          <button class="feature-btn">Find Job</button>
+        </div>
+      </div>
+      <div class="width-50">
+        <div class="feature-panel">
+          <img src="d:\let's find\Lets--find-main\Lets--find-main\look.jpeg" class="feature-img">
+          <h4 class="feature-title"> ARE YOU LOOKING FOR A CANDIDATE ?</h4>
+          <p class="feature-desc">It look like readable English. Many desktop publishing packagesand web page editors now use Lorem Ipsum as their default model text</p>
+          <button class="feature-btn">Find Candidates</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!------FOOTER SECTION FOOTER SECTION FOOTER SECTION ------->
+
+  <div class="content-section" id="footerSection">
+<footer id="contactSection">
+    <div class="width-100 footer-background" >
+      <div class="container">
+        <div class="width-25">
+          <h4>QUICK LINKS</h4>
+          <ul class="footer-list">
+            <li>Local Jobs in Biratnagar,Nepal</li>
+          </ul>
+        </div>
+        <div class="width-25">
+          <h4>JOB TYPE</h4>
+          <ul class="footer-list">
+            <li>Plumbering Jobs In nepal</li>
+            <li>Carpenter Jobs in Nepal</li>
+            <li>Easy Jobs in nepal</li>
+          </ul>
+        </div>
+        <div class="width-25">
+          <h4>RESOURCES</h4>
+          <ul class="footer-list">
+            <li>Home</li>
+            <li>Post Free Job</li>
+            <li>Recruiter Login</li>
+            <li>Contact us</li>
+          </ul>
+        </div>
+        <div class="width-25">
+          <h4>GET IN TOUCH</h4>
+          <ul class="get-in-touch">
+            <li>
+              <i class="fa fa-envelope-o" aria-hidden="true"></i>
+              <p>E-MAIL: karanpokhrel999@gmail.com</p>
+            </li>
+            <li>
+              <i class="fa fa-headphones" aria-hidden="true"></i>
+              <p>WHATS-APP: +97 9824344231</p>
+            </li>
+            <li>
+              <i class="fa fa-fax" aria-hidden="true"></i>
+              <p>CONTACT NO.: +97-987654321</p>
+            </li>
+            <li>
+              <i class="fa fa-globe" aria-hidden="true"></i>
+              <p>WEBSITE: https://rahulmotu.com</p>
+            </li>
+          <li>
+            <img src="file:///C:/Users/DELL/Downloads/f.jpeg">
+          </li>
+          <li>
+            <img src="file:///C:/Users/DELL/Downloads/twitter.jpg">
+          </li>
+          <li>
+            <img src="file:///C:/Users/DELL/Downloads/ins.jpg">
+          </li>
+          <li>
+            <img src="file:///C:/Users/DELL/Downloads/lin.jpg">
+          </li>
+          </ul>
+      </div>
+    </div>
+  </div>
+  </footer>
+  <script src="style.js"></script>
+  </div>
+  </body>
+  </html>
+  
